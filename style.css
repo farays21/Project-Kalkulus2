@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  body {
+    background-color: #F0F4F8;
+    color: #333;
+    padding: 20px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  nav button {
+    padding: 10px 20px;
+    background-color: #84bbf1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  nav button.active {
+    background-color: #0089f9;
+  }
+  nav button:hover {
+    background-color:#31a2fe;
+    transition: .3s ease-in-out;
+  }
+  section {
+    display: none;
+    background-color: #84bbf1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  section.active {
+    display: block;
+  }
+  div.materi {
+    background-color: #e8f9ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  ul {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  .team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .team-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .team-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .team-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #007BFF;
+  }
+  
+  .team-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+  }
+  
+  .team-card p {
+    font-size: 0.9em;
+    color: #263238;
+  }
+  
+  .team-card .social {
+    margin-top: 10px;
+    display: inline-block;
+    color: #263238;
+    font-size: 1.4em;
+    transition: color 0.3s;
+  }
+  
+  .team-card .social:hover {
+    color: #c13584;
+  }
+  
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

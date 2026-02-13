@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotakers.com</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+      body {
+          background-image: url('wp.jpg'); 
+          background-size: cover; 
+          background-position: center; 
+          background-attachment: fixed; 
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Website Permasalahan Anak Kostan</h1>
+  </header>
+
+  <nav>
+    <button onclick="showSection('materi')" class="active">Materi</button>
+    <button onclick="window.location.href='indexi.html';">Permasalahan & Penyelesaian</button>
+    <button onclick="showSection('tentang')">Tentang Kami</button>
+  </nav>
+
+  <section id="materi" class="active">
+    <div class="materi">
+        <h2>📘 Materi Kalkulus yang Digunakan</h2>
+        <p>Pada halaman ini, kami mengintegrasikan konsep-konsep kalkulus untuk menganalisis dan menghitung pengeluaran mingguan anak kos dengan cara yang lebih terstruktur dan efisien. Meskipun penghitungan yang dilakukan terlihat sederhana, prinsip-prinsip kalkulus diterapkan untuk memberikan wawasan yang lebih mendalam tentang bagaimana cara menghitung total pengeluaran secara akurat dan terukur.</p>
+
+        <h3>1. Fungsi (Function)</h3>
+        <p>Dalam kalkulus, sebuah <strong>fungsi</strong> menggambarkan hubungan antara dua variabel, di mana satu variabel (input) menghasilkan variabel lainnya (output). Misalnya, pengeluaran harian anak kos dapat dianggap sebagai sebuah fungsi, di mana hari ke-<span>x</span> (input) menghasilkan jumlah pengeluaran pada hari tersebut (output). Fungsi ini memungkinkan kita untuk memahami perubahan pengeluaran dari hari ke hari.</p>
+
+        <h3>2. Integral Tentu (Definite Integral)</h3>
+        <p><strong>Integral</strong> adalah salah satu konsep utama dalam kalkulus yang digunakan untuk menghitung total atau akumulasi dari nilai yang berubah seiring waktu. Misalnya, jika kita ingin mengetahui total pengeluaran anak kos dalam satu minggu, kita bisa menganggapnya sebagai <strong>luas di bawah kurva</strong> yang menggambarkan pengeluaran harian. Konsep ini sangat berguna untuk menghitung total dari perubahan pengeluaran yang terjadi sepanjang minggu.</p>
+
+        <h3>3. Integral Numerik (Numerical Integration)</h3>
+        <p>Karena data pengeluaran yang digunakan bersifat diskrit (per hari), kita menggunakan pendekatan <strong>integral numerik</strong>. Ini adalah metode untuk mendekati hasil integral dengan menggunakan penjumlahan nilai-nilai pada titik-titik tertentu, dalam hal ini adalah pengeluaran pada setiap hari. Dengan pendekatan ini, meskipun kita tidak menggunakan rumus integral secara langsung, kita tetap menerapkan prinsip dasar kalkulus untuk mengakumulasi total pengeluaran.</p>
+
+    </div>
+  </section>
+
+
+  <section id="penyelesaian">
+    <h2>Penyelesaian</h2>
+    <p>Pemecahan masalah melalui strategi pembelajaran yang efektif dan kreatif.</p>
+  </section>
+
+  <section id="tentang">
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tentang Kami</h2>
+    <div class="team-container">
+      <div class="team-card">
+        <img src="rozano2.jpg" alt="Rozan">
+        <h3>Rozan Aqila Daris</h3>
+        <h4>247006111127</h4>
+        <p>Pemecah Masalah</p>
+        <a href="https://www.instagram.com/asriel.xox?igsh=MTdyNHdkdzB4aWV1YQ==" class="social"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="team-card">
+        <img src="nisrina.jpg" alt="Nisrina">
+        <h3>Nisrina Syahira Damayanti Wijaya</h3>
+        <h4>247006111147</h4>
+        <p>Desainer UI</p>
+        <a href="https://www.instagram.com/nisrina.zhra/?utm_source=ig_web_button_share_sheet" class="social"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="team-card">
+        <img src="ajib2.jpg" alt="Ajib">
+        <h3>Ajib Nasrullah</h3>
+        <h4>247006111126</h4>
+        <p>WEB Developer</p>
+        <a href="https://www.instagram.com/ajib_nsrllh" class="social"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="team-card">
+        <img src="dika.jpg" alt="Dika">
+        <h3>Mahardika Rajbi Firdaus</h3>
+        <h4>247006111148</h4>
+        <p>Editor Materi 1</p>
+        <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="team-card">
+        <img src="raffa.jpg" alt="China">
+        <h3>Raffa Erlangga Faturochman</h3>
+        <h4>247006111145</h4>
+        <p>Editor Materi 2</p>
+        <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

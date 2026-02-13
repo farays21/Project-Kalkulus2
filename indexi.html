@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotakers.com</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --container-bg: white;
+            --container-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --input-border: #ddd;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --result-bg: #e8f4fc;
+            --tips-bg: #f8f9fa;
+            --history-bg: #f0f0f0;
+            --delete-btn: #e74c3c;
+            --mantap-color: #27ae60;
+            --h1-color: #2c3e50;
+            --history-date: #666;
+            --section-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --container-bg: #2d2d2d;
+            --container-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            --input-border: #444;
+            --button-bg: #2980b9;
+            --button-hover: #3498db;
+            --result-bg: #1e3a5f;
+            --tips-bg: #333;
+            --history-bg: #3d3d3d;
+            --delete-btn: #c0392b;
+            --mantap-color: #2ecc71;
+            --h1-color: #3498db;
+            --history-date: #aaa;
+            --section-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: url('wp.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+        }
+        /* Introduction Page Styles */
+        .intro-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .intro-page h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--h1-color);
+        }
+
+        .team-members {
+            background-color: var(--section-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--container-shadow);
+            margin-bottom: 30px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .team-members h2 {
+            color: var(--h1-color);
+            margin-bottom: 20px;
+        }
+
+        .member {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .purpose {
+            background-color: var(--section-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--container-shadow);
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .purpose h2 {
+            color: var(--h1-color);
+            margin-bottom: 20px;
+        }
+
+        .purpose p {
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .start-btn {
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .start-btn:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Calculator Page Styles (hidden by default) */
+        .calculator-page {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .back-to-home {
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-to-home:hover {
+            background-color: var(--button-hover);
+        }
+
+        .theme-toggle {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--button-hover);
+        }
+
+        /* Rest of the calculator styles */
+        .container {
+            background-color: var(--container-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--container-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--result-bg);
+            border-radius: 4px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .total {
+            font-weight: bold;
+            border-top: 1px solid var(--input-border);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .tips {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: var(--tips-bg);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .mantap {
+            color: var(--mantap-color);
+            font-weight: bold;
+        }
+
+        .history {
+            margin-top: 20px;
+        }
+
+        .history-item {
+            background-color: var(--history-bg);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .history-date {
+            font-size: 12px;
+            color: var(--history-date);
+        }
+
+        .delete-btn {
+            background-color: var(--delete-btn);
+            padding: 3px 8px;
+            font-size: 12px;
+            width: auto;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='badan.html';">Kembali Ke Awal</button>
+        </nav>
+    </header>
+    <!-- Introduction Page -->
+    <div class="intro-page" id="introPage">
+        <h1>Kalkulator Keuangan Anak Kos</h1>
+        
+        
+        <div class="purpose">
+            <h2>Kenapa Kami Membuat Web Ini?</h2>
+            <p>
+                Sebagai anak kos, kami sering mengalami kesulitan dalam mengatur keuangan mingguan. 
+                Banyak pengeluaran tak terduga yang membuat budget membengkak. Web ini kami buat untuk:
+            </p>
+            <p>
+                1. Membantu anak kos mengelola keuangan mingguan dengan lebih baik<br>
+                2. Memantau pengeluaran rutin dan tidak rutin<br>
+                3. Memberikan gambaran jelas tentang alokasi dana<br>
+                4. Mencegah pengeluaran berlebihan<br>
+                5. Membantu menabung untuk kebutuhan mendesak
+            </p>
+            <p>
+                Dengan kalkulator ini, kami berharap bisa membantu sesama anak kos dalam mengatur keuangan mereka.
+            </p>
+        </div>
+        
+        <a href="#" class="start-btn" id="startBtn">Mulai Gunakan Kalkulator</a>
+    </div>
+
+    <!-- Calculator Page (hidden by default) -->
+    <div class="calculator-page" id="calculatorPage">
+        <div class="nav-buttons">
+            <button class="back-to-home" id="backBtn">Kembali </button>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span> Mode
+            </button>
+        </div>
+
+        <div class="container">
+            <h1>Kalkulator Keuangan Anak Kos</h1>
+            <p>Hitung dan simpan pengeluaran mingguanmu biar ga boncos!</p>
+            
+            <div class="form-group">
+                <label for="nama-catatan">Nama Catatan (Opsional):</label>
+                <input type="text" id="nama-catatan" placeholder="Misal: Minggu Pertama April">
+            </div>
+            
+            <div class="form-group">
+                <label for="uang-mingguan">Uang yang lo punya buat seminggu (Rp):</label>
+                <input type="number" id="uang-mingguan" placeholder="Misal: 350000">
+            </div>
+            
+            <h3>Pengeluaran Wajib:</h3>
+            
+            <div class="form-group">
+                <label for="makan">Makan & Minum (Rp/minggu):</label>
+                <input type="number" id="makan" placeholder="Misal: 150000">
+            </div>
+            
+            <div class="form-group">
+                <label for="transport">Transport (Rp/minggu):</label>
+                <input type="number" id="transport" placeholder="Misal: 50000">
+            </div>
+            
+            <div class="form-group">
+                <label for="pulsa">Pulsa/Paket Data (Rp/minggu):</label>
+                <input type="number" id="pulsa" placeholder="Misal: 25000">
+            </div>
+            
+            <h3>Pengeluaran Lain (Kalau ada):</h3>
+            
+            <div class="form-group">
+                <label for="hiburan">Hiburan (nongkrong, nonton, dll) (Rp/minggu):</label>
+                <input type="number" id="hiburan" placeholder="Misal: 30000">
+            </div>
+            
+            <div class="form-group">
+                <label for="lainnya">Lain-lain (Rp/minggu):</label>
+                <input type="number" id="lainnya" placeholder="Misal: 20000">
+            </div>
+            
+            <button onclick="hitungDanSimpan()">Hitung & Simpan Pengeluaran</button>
+            <button onclick="resetForm()" style="background-color: #95a5a6;">Reset Form</button>
+            
+            <div id="result" class="result">
+                <h3>Detail Keuangan Lo</h3>
+                <div id="expense-details"></div>
+                <div id="sisa-uang" class="total"></div>
+                <div id="rekomendasi"></div>
+            </div>
+            
+            <div class="history">
+                <h3>Riwayat Catatan</h3>
+                <div id="history-list"></div>
+            </div>
+            
+            <div class="tips">
+                <h3>Tips Jago Atur Duit Buat Anak Kos:</h3>
+                <ul>
+                    <li>Catet semua pengeluaran harian biar ga bocor</li>
+                    <li>Utamain kebutuhan pokok (makan, transport, pulsa)</li>
+                    <li>Sisihin sedikit buat jaga-jaga</li>
+                    <li>Masak sendiri lebih hemat daripada beli terus</li>
+                    <li>Manfaatin promo dan diskon buat kebutuhan sehari-hari</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between intro and calculator pages
+        document.getElementById('startBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('introPage').style.display = 'none';
+            document.getElementById('calculatorPage').style.display = 'block';
+            tampilkanRiwayat();
+        });
+
+        document.getElementById('backBtn').addEventListener('click', function() {
+            document.getElementById('calculatorPage').style.display = 'none';
+            document.getElementById('introPage').style.display = 'flex';
+        });
+
+        // Fungsi untuk toggle theme
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+            updateThemeIcon();
+        }
+
+        // Fungsi untuk update icon theme
+        function updateThemeIcon() {
+            const icon = document.getElementById('theme-icon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.textContent = '☀️';
+            } else {
+                icon.textContent = '🌙';
+            }
+        }
+
+        // Cek preferensi theme saat load
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+        updateThemeIcon();
+
+        // Fungsi untuk menyimpan data ke localStorage
+        function simpanData(data) {
+            let semuaData = localStorage.getItem('keuanganKos');
+            if (!semuaData) {
+                semuaData = [];
+            } else {
+                semuaData = JSON.parse(semuaData);
+            }
+            
+            semuaData.push(data);
+            localStorage.setItem('keuanganKos', JSON.stringify(semuaData));
+            tampilkanRiwayat();
+        }
+
+        // Fungsi untuk menampilkan riwayat
+        function tampilkanRiwayat() {
+            const historyList = document.getElementById('history-list');
+            historyList.innerHTML = '';
+            
+            const semuaData = localStorage.getItem('keuanganKos');
+            if (!semuaData || JSON.parse(semuaData).length === 0) {
+                historyList.innerHTML = '<p>Belum ada catatan tersimpan</p>';
+                return;
+            }
+            
+            const data = JSON.parse(semuaData);
+            
+            data.reverse().forEach((item, index) => {
+                const reversedIndex = data.length - 1 - index;
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                
+                const sisaUang = item.uangMingguan - item.totalPengeluaran;
+                const status = sisaUang < 0 ? '❌ Defisit' : sisaUang === 0 ? '⚠️ Pas' : '✅ Surplus';
+                
+                historyItem.innerHTML = `
+                    <div><strong>${item.nama || 'Tanpa Nama'}</strong> <span class="history-date">${new Date(item.tanggal).toLocaleString()}</span></div>
+                    <div>Total: Rp ${item.totalPengeluaran.toLocaleString('id-ID')} | Sisa: Rp ${sisaUang.toLocaleString('id-ID')}</div>
+                    <div>Status: ${status}</div>
+                    <button class="delete-btn" onclick="hapusData(${reversedIndex})">Hapus</button>
+                `;
+                
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        // Fungsi untuk menghapus data
+        function hapusData(index) {
+            let semuaData = JSON.parse(localStorage.getItem('keuanganKos'));
+            semuaData.splice(index, 1);
+            localStorage.setItem('keuanganKos', JSON.stringify(semuaData));
+            tampilkanRiwayat();
+        }
+
+        // Fungsi untuk menghitung dan menyimpan
+        function hitungDanSimpan() {
+            const namaCatatan = document.getElementById('nama-catatan').value;
+            const uangMingguan = parseInt(document.getElementById('uang-mingguan').value) || 0;
+            const makan = parseInt(document.getElementById('makan').value) || 0;
+            const transport = parseInt(document.getElementById('transport').value) || 0;
+            const pulsa = parseInt(document.getElementById('pulsa').value) || 0;
+            const hiburan = parseInt(document.getElementById('hiburan').value) || 0;
+            const lainnya = parseInt(document.getElementById('lainnya').value) || 0;
+            
+            const totalPengeluaran = makan + transport + pulsa + hiburan + lainnya;
+            const sisaUang = uangMingguan - totalPengeluaran;
+            
+            const expenseDetails = document.getElementById('expense-details');
+            expenseDetails.innerHTML = `
+                <div class="expense-item"><span>Makan & Minum:</span><span>Rp ${makan.toLocaleString('id-ID')}</span></div>
+                <div class="expense-item"><span>Transport:</span><span>Rp ${transport.toLocaleString('id-ID')}</span></div>
+                <div class="expense-item"><span>Pulsa/Data:</span><span>Rp ${pulsa.toLocaleString('id-ID')}</span></div>
+                <div class="expense-item"><span>Hiburan:</span><span>Rp ${hiburan.toLocaleString('id-ID')}</span></div>
+                <div class="expense-item"><span>Lain-lain:</span><span>Rp ${lainnya.toLocaleString('id-ID')}</span></div>
+                <div class="expense-item"><span>Total Pengeluaran:</span><span>Rp ${totalPengeluaran.toLocaleString('id-ID')}</span></div>
+            `;
+            
+            const sisaElement = document.getElementById('sisa-uang');
+            sisaElement.innerHTML = `<span>Sisa Uang:</span><span>Rp ${sisaUang.toLocaleString('id-ID')}</span>`;
+            
+            const rekomendasi = document.getElementById('rekomendasi');
+            if (sisaUang < 0) {
+                rekomendasi.innerHTML = `<p style="color:red; margin-top:10px;">⚠️ Waduh, pengeluaran lo kebanyakan! Kurangi jajan atau cari tambahan.</p>`;
+            } else if (sisaUang === 0) {
+                rekomendasi.innerHTML = `<p style="color:orange; margin-top:10px;">🔍 Pas banget duit lo, ga ada sisa. Coba deh sisihin sedikit buat tabungan.</p>`;
+            } else {
+                const persentaseSisa = (sisaUang / uangMingguan * 100).toFixed(1);
+                rekomendasi.innerHTML = `
+                    <p class="mantap" style="margin-top:10px;">MANTAP! Masih ada sisa ${persentaseSisa}% dari budget.</p>
+                    <p>Sisihin buat tabungan atau dana darurat ya!</p>
+                `;
+            }
+            
+            const data = {
+                nama: namaCatatan,
+                tanggal: new Date().toISOString(),
+                uangMingguan: uangMingguan,
+                makan: makan,
+                transport: transport,
+                pulsa: pulsa,
+                hiburan: hiburan,
+                lainnya: lainnya,
+                totalPengeluaran: totalPengeluaran,
+                sisaUang: sisaUang
+            };
+            
+            simpanData(data);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        // Fungsi untuk reset form
+        function resetForm() {
+            document.getElementById('nama-catatan').value = '';
+            document.getElementById('uang-mingguan').value = '';
+            document.getElementById('makan').value = '';
+            document.getElementById('transport').value = '';
+            document.getElementById('pulsa').value = '';
+            document.getElementById('hiburan').value = '';
+            document.getElementById('lainnya').value = '';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
